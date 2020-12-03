@@ -136,6 +136,57 @@ function makeResponsive() {
 
 }
 
+// Import Data from the data.csv File & Execute Everything Below
+d3.csv("assets/data/data.csv").then(function(healthData, err) {
+    if (err) throw err;
+
+    // parsing the data
+
+    healthData.forEach(function(data){
+        data.poverty = +data.poverty;
+        data.age = +data.age;
+        data.income = +data.income;
+        data.healthcare = +data.healthcare;
+        data.obesity = +data.obesity;
+        data.smokes = +data.smokes;
+    });
+
+    // Create Axis Functions for the Chart
+    var xLinearScale = xScale(healthData, chosenXAxis);
+    var yLinearScale = yScale(healthData, chosenYAxis); 
+
+    // Create initial axis functions
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
+    // append x axis
+    var xAxis = chartGroup.append("g")
+                            .classed("x-axis", true)
+                            .attr("transform", `translate(0, ${height})`)
+                            .call(bottomAxis);
+
+    // append y axis
+    var yAxis = chartGroup.append("g")
+                            .classed("y-axis", true)
+                            .call(leftAxis);
+    
+    // append initial circles
+    var circlesGroup = chartGroup.selectAll("circle")
+                                    .data(healthData)
+                                    .enter()
+                                    .append("circle")
+                                    .attr("cx", d => xLinearScale(d[chosenXAxis]))
+                                    .attr("cy", d => yLinearScale(d[chosenYAxis]))
+                                    .attr("class", "stateCircle")
+                                    .attr("r", 15)
+                                    .attr("opacity", ".75");
+    // cretae group for x-axis labels
+
+    var xl
+    
+
+
+
 
   
     
