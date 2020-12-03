@@ -134,7 +134,7 @@ function makeResponsive() {
 
     return circlesGroup;
 
-    }
+}
 
 
   
