@@ -1,6 +1,8 @@
 # D3-challenge
 # D3 Homework - Data Journalism and D3
 
+Published at:https://fasahathsyeda.github.io/D3-challenge/
+
 ![Newsroom](https://media.giphy.com/media/v2xIous7mnEYg/giphy.gif)
 
 ## Background
